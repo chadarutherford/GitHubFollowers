@@ -6,7 +6,6 @@
 //  Copyright © 2020 chadarutherford.com. All rights reserved.
 //
 
-import SwiftUI
 import UIKit
 
 class SearchViewController: UIViewController {
@@ -28,7 +27,7 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     func createDismissKeyboardTapGesture() {
@@ -87,22 +86,5 @@ extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         pushFollowerListVC()
         return true
-    }
-}
-
-struct SearchViewControllerPreview: PreviewProvider {
-    static var previews: some View {
-        ContainerView().edgesIgnoringSafeArea(.all).environment(\.colorScheme, .dark)
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable {
-        func updateUIViewController(_ uiViewController: SearchViewControllerPreview.ContainerView.UIViewControllerType,
-                                    context: UIViewControllerRepresentableContext<SearchViewControllerPreview.ContainerView>) {
-            
-        }
-        
-        func makeUIViewController(context: UIViewControllerRepresentableContext<SearchViewControllerPreview.ContainerView>) -> UIViewController {
-            SearchViewController()
-        }
     }
 }

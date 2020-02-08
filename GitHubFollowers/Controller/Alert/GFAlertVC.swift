@@ -6,7 +6,6 @@
 //  Copyright © 2020 chadarutherford.com. All rights reserved.
 //
 
-import SwiftUI
 import UIKit
 
 class GFAlertVC: UIViewController {
@@ -40,10 +39,12 @@ class GFAlertVC: UIViewController {
         configureContainerView()
         configureTitleLabel()
         configureActionButton()
+        configureBodyLabel()
     }
     
     func configureContainerView() {
         view.addSubview(containerView)
+        containerView.backgroundColor = .systemBackground
         containerView.layer.cornerRadius = 16
         containerView.layer.borderWidth = 2
         containerView.layer.borderColor = UIColor.white.cgColor
@@ -93,22 +94,5 @@ class GFAlertVC: UIViewController {
     
     @objc func dismissVC() {
         dismiss(animated: true)
-    }
-}
-
-struct AlertPreview: PreviewProvider {
-    static var previews: some View {
-        ContainerView()
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable {
-        func updateUIViewController(_ uiViewController: AlertPreview.ContainerView.UIViewControllerType,
-                                    context: UIViewControllerRepresentableContext<AlertPreview.ContainerView>) {
-            
-        }
-        
-        func makeUIViewController(context: UIViewControllerRepresentableContext<AlertPreview.ContainerView>) -> UIViewController {
-            GFAlertVC(title: "Error", message: "Something went wrong", buttonTitle: "Ok")
-        }
     }
 }
