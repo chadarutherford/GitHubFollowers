@@ -14,6 +14,7 @@ class GFTitleLabel: UILabel {
         configure()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }

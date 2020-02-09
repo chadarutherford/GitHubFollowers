@@ -15,6 +15,7 @@ class GFButton: UIButton {
         configure()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
