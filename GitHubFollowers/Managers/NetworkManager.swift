@@ -51,4 +51,36 @@ class NetworkManager {
             }
         }
     }
+    
+    func getUserInfo(for username: String, completion: @escaping (Result<User, NetworkError>) -> Void) {
+        guard let url = baseURL?.appendingPathComponent("\(username)") else {
+            completion(.failure(.invalidUsername))
+            return
+        }
+        
+        networkLoader.loadData(using: url) { data, response, error in
+            guard error == nil else {
+                completion(.failure(.unableToComplete))
+                return
+            }
+            
+            guard let response = response, response.statusCode == 200 else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(.invalidData))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let user = try decoder.decode(User.self, from: data)
+                completion(.success(user))
+            } catch {
+                completion(.failure(.invalidData))
+            }
+        }
+    }
 }

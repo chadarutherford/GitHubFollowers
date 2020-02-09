@@ -31,6 +31,7 @@
 		63D44F6723EF2C1F00B36D28 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D44F6623EF2C1F00B36D28 /* FollowerCell.swift */; };
 		63D44F6C23EF2CA700B36D28 /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D44F6B23EF2CA700B36D28 /* GFAvatarImageView.swift */; };
 		63D44F7023EF3F6400B36D28 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D44F6F23EF3F6400B36D28 /* UIHelper.swift */; };
+		63EC978623F04DD4008E87B5 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC978523F04DD4008E87B5 /* UserInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		63D44F6623EF2C1F00B36D28 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		63D44F6B23EF2CA700B36D28 /* GFAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
 		63D44F6F23EF3F6400B36D28 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		63EC978523F04DD4008E87B5 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			children = (
 				6331937123EC3EF3003D7529 /* SearchViewController.swift */,
 				6302EFBD23ECB97E0023D575 /* FollowerListViewController.swift */,
+				63EC978523F04DD4008E87B5 /* UserInfoViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				6302EFBE23ECB97E0023D575 /* FollowerListViewController.swift in Sources */,
 				639092A623ECC2C100B14AAE /* GFAlertVC.swift in Sources */,
 				63D0136A23EDB10400F7FEB3 /* User.swift in Sources */,
+				63EC978623F04DD4008E87B5 /* UserInfoViewController.swift in Sources */,
 				63D0136523EDA0AB00F7FEB3 /* String+Ext.swift in Sources */,
 				63D0136823EDAFB900F7FEB3 /* Follower.swift in Sources */,
 				639092A423ECC20C00B14AAE /* GFBodyLabel.swift in Sources */,
