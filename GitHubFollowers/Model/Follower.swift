@@ -12,6 +12,11 @@ struct Follower: Codable, Hashable {
     var login: String
     var avatarURL: String
     
+    init(login: String, avatarURL: String) {
+        self.login = login
+        self.avatarURL = avatarURL
+    }
+    
     enum FollowerKeys: String, CodingKey {
         case login
         case avatarURL = "avatar_url"

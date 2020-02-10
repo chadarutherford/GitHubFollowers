@@ -6,6 +6,7 @@
 //  Copyright © 2020 chadarutherford.com. All rights reserved.
 //
 
+import CoreData
 import UIKit
 
 protocol FollowerListViewControllerDelegate: AnyObject {
@@ -42,6 +43,41 @@ class FollowerListViewController: UIViewController {
     private func configureViewController() {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addToFavorites))
+    }
+    
+    @objc private func addToFavorites() {
+        showLoadingView()
+        NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
+            guard let self = self else { return }
+            self.dismissLoadingView()
+            switch result {
+            case .success(let user):
+                let context = CoreDataStack.shared.backgroundContext
+                let favorite = Follower(login: user.login, avatarURL: user.avatarURL)
+                self.update(with: favorite, context: context)
+            case .failure(let error):
+                self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.localizedDescription, buttonTitle: "Ok")
+            }
+        }
+    }
+    
+    private func update(with follower: Follower, context: NSManagedObjectContext) {
+        context.perform {
+            do {
+                let fetchRequest: NSFetchRequest<Favorite> = Favorite.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "name == %@", follower.login)
+                let favorite = try context.fetch(fetchRequest)
+                if favorite.first?.name == follower.login {
+                    return
+                }
+                Favorite(follower: follower, context: context)
+                try CoreDataStack.shared.save(context)
+                self.presentGFAlertOnMainThread(title: "Success!", message: "The user was saved to your favorites!", buttonTitle: "Ok")
+            } catch {
+                return
+            }
+        }
     }
     
     private func configureCollectionView() {
